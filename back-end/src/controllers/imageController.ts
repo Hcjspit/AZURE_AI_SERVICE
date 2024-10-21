@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import imageModel from "../models/imageModel";
-import { analyzeImage } from "../services/imageService";
+import { analyzeImage, translateResults } from "../services/imageService";
 
 export const analyzeImages = async (req: Request, res: Response) => {
   const { languages, imageFilenames } = req.body;
@@ -16,11 +16,16 @@ export const analyzeImages = async (req: Request, res: Response) => {
 
       if (analysisResult) {
         for (const lang of languages) {
+          const { translatedCaption, translatedTags } = await translateResults(
+            analysisResult.caption,
+            analysisResult.tags,
+            lang
+          );
           const newImageRecord = new imageModel({
             filename,
             language: lang,
-            caption: analysisResult.caption,
-            tags: analysisResult.tags,
+            caption: translatedCaption,
+            tags: translatedTags,
           });
           await newImageRecord.save();
         }
