@@ -12,6 +12,7 @@ export class ImageUploaderComponent {
   selectedFiles: File[] = [];
   previewUrls: any[] = [];
   responseFromServer: any[] = [];
+  filePreviews: { name: string; url: string; type: string }[] = [];
 
   constructor(
     private imageAnalysisService: ImageAnalysisService,
