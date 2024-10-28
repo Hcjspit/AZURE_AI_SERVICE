@@ -16,9 +16,7 @@ export class ImageAnalysisService {
     images.forEach((image) => {
       formData.append('images', image, image.name);
     });
-
     formData.append('languages', languages.join(','));
-
     const headers = new HttpHeaders();
     headers.append('Accept', 'application/json');
 

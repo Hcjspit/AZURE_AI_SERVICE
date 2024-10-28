@@ -1,15 +1,96 @@
+.upload-form {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+/* Titoli */
+.upload-form h3 {
+  color: #333;
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+.upload-form h4 {
+  color: #555;
+  font-size: 1.1em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 5px;
+}
+
+/* Input per file e testo */
+.upload-form input[type="file"] {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.upload-form input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 0.9em;
+}
+
+/* Bottone */
+.upload-form button {
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.upload-form button:hover {
+  background-color: #357abf;
+  justify-content: center;
+}
+
+/* Sezione anteprima immagini */
 .preview-container {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10px;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .preview-image {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
   object-fit: cover;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+}
+
+.preview-image:hover {
+  transform: scale(1.05);
+}
+
+/* Risposta dal server */
+.response-container {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+}
+
+.response-container p {
+  font-size: 0.9em;
+  margin: 5px 0;
+}
+
+.response-container strong {
+  color: #333;
 }

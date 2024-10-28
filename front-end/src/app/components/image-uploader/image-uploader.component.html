@@ -1,5 +1,6 @@
 <div class="upload-form">
   <h3>Carica immagini</h3>
+  <br />
 
   <!-- Input file per la selezione delle immagini -->
   <input type="file" (change)="onFileSelect($event)" multiple />
@@ -26,11 +27,11 @@
   <!-- Visualizzazione della risposta del server -->
   <div *ngIf="responseFromServer.length > 0">
     <h4>Risposta dal server</h4>
-    <div *ngFor="let response of responseFromServer">
-      <p><strong>Nome del file:</strong> {{ response.filename }}</p>
-      <p><strong>Lingua:</strong> {{ response.language }}</p>
-      <p><strong>Descrizione:</strong> {{ response.caption }}</p>
-      <p><strong>Tag:</strong> {{ response.tags.join(", ") }}</p>
+    <div *ngFor="let image of responseFromServer">
+      <p><strong>Nome del file:</strong> {{ image.filename }}</p>
+      <p><strong>Lingua:</strong> {{ image.language }}</p>
+      <p><strong>Descrizione:</strong> {{ image.caption }}</p>
+      <p><strong>Tag:</strong> {{ image.tags.join(", ") }}</p>
     </div>
   </div>
 </div>
