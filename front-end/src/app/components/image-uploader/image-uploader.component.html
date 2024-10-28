@@ -1,0 +1,36 @@
+<div class="upload-form">
+  <h3>Carica immagini</h3>
+
+  <!-- Input file per la selezione delle immagini -->
+  <input type="file" (change)="onFileSelect($event)" multiple />
+
+  <!-- Anteprima delle immagini selezionate -->
+  <div *ngIf="previewUrls.length > 0" class="preview-container">
+    <h4>Anteprima delle immagini</h4>
+    <div *ngFor="let previewUrl of previewUrls">
+      <img [src]="previewUrl" alt="Anteprima immagine" class="preview-image" />
+    </div>
+  </div>
+
+  <!-- Input per inserire le lingue -->
+  <input
+    type="text"
+    [(ngModel)]="languages"
+    placeholder="Inserisci le lingue separate da virgola (es. en,it,es)"
+    (change)="onLanguageChange($event)"
+  />
+
+  <!-- Bottone per inviare le immagini -->
+  <button (click)="uploadImages()">Carica Immagini</button>
+
+  <!-- Visualizzazione della risposta del server -->
+  <div *ngIf="responseFromServer.length > 0">
+    <h4>Risposta dal server</h4>
+    <div *ngFor="let response of responseFromServer">
+      <p><strong>Nome del file:</strong> {{ response.filename }}</p>
+      <p><strong>Lingua:</strong> {{ response.language }}</p>
+      <p><strong>Descrizione:</strong> {{ response.caption }}</p>
+      <p><strong>Tag:</strong> {{ response.tags.join(", ") }}</p>
+    </div>
+  </div>
+</div>

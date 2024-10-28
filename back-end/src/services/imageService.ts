@@ -1,10 +1,9 @@
-import {
-  ComputerVisionClient,
-  ComputerVisionClientContext,
-} from "@azure/cognitiveservices-computervision";
+import { ComputerVisionClient } from "@azure/cognitiveservices-computervision";
 import { ApiKeyCredentials } from "@azure/ms-rest-js";
 import dotenv from "dotenv";
 import axios from "axios";
+import fs from "fs";
+import path from "path";
 
 dotenv.config();
 
@@ -19,11 +18,14 @@ const computerVisionClient = new ComputerVisionClient(
   endpoint
 );
 
-export const analyzeImage = async (imageUrl: string) => {
+export const analyzeImage = async (imageBuffer: Buffer) => {
   try {
-    const analysis = await computerVisionClient.analyzeImage(imageUrl, {
-      visualFeatures: ["Description"],
-    });
+    const analysis = await computerVisionClient.analyzeImageInStream(
+      imageBuffer,
+      {
+        visualFeatures: ["Description"],
+      }
+    );
 
     const caption = analysis.description?.captions?.[0]?.text || "";
     const tags = analysis.description?.tags || [];

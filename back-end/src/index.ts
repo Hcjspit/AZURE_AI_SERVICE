@@ -7,6 +7,7 @@ dotenv.config();
 
 const dbURI = process.env.MONGO_URI;
 const port = process.env.PORT;
+const directory = __dirname;
 
 mongoose.set("debug", true);
 mongoose
@@ -15,5 +16,7 @@ mongoose
   .catch((err) => console.error("MongoDB connection error", err));
 
 app.listen(port, () => {
-  console.log(`server running on port ${port}`);
+  console.log(
+    `Server running on port ${port},\n\Full drectory path: ${directory}`
+  );
 });
